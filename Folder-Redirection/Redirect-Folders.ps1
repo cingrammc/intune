@@ -281,6 +281,7 @@ If (Test-Path -Path $SyncFolder -ErrorAction SilentlyContinue) {
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'Desktop' -SetFolder 'Desktop' -Target 'Desktop'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyDocuments' -SetFolder 'Documents' -Target 'Documents'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyPictures' -SetFolder 'Pictures' -Target 'Pictures'
+    Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyVideos' -SetFolder 'Videos' -Target 'Videos'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'Favorites' -SetFolder 'Favorites' -Target 'Favorites'
 }
 Else {
