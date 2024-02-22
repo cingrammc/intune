@@ -283,6 +283,7 @@ If (Test-Path -Path $SyncFolder -ErrorAction SilentlyContinue) {
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyPictures' -SetFolder 'Pictures' -Target 'Pictures'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyVideos' -SetFolder 'Videos' -Target 'Videos'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'Favorites' -SetFolder 'Favorites' -Target 'Favorites'
+    Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'Personal' -SetFolder 'Documents' -Target 'Documents'
 }
 Else {
     Write-Verbose "$SyncFolder does not (yet) exist. Skipping folder redirection until next logon."
