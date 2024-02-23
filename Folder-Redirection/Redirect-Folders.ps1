@@ -273,11 +273,20 @@ Function Move-File {
 
 
 # Get OneDrive sync folder
-$SyncFolder = Get-ItemPropertyValue -Path 'HKCU:\Software\Microsoft\OneDrive\Accounts\Business1' -Name 'UserFolder' -ErrorAction SilentlyContinue
+$Path = 'HKCU:\Software\Microsoft\OneDrive\Accounts\Business1'
+$SyncFolder = Get-ItemPropertyValue -Path $Path -Name 'UserFolder' -ErrorAction SilentlyContinue
 Write-Verbose "Target sync folder is $SyncFolder."
 
 # Redirect select folders
 If (Test-Path -Path $SyncFolder -ErrorAction SilentlyContinue) {
+    
+    # Set TimerAutoMount key
+    $Name = "Timerautomount"
+    $Type = "QWORD"
+    $Value = 1
+    Write-Verbose "Setting Timerautomount registry key at $path."
+    Set-ItemProperty -Path $Path -Name $Name -Type $Type -Value $Value 
+    
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'Desktop' -SetFolder 'Desktop' -Target 'Desktop'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyDocuments' -SetFolder 'Documents' -Target 'Documents'
     Redirect-Folder -SyncFolder $SyncFolder -GetFolder 'MyPictures' -SetFolder 'Pictures' -Target 'Pictures'
